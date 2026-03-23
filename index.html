@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portafolio Digital de Aprendizaje</title>
+  <style>
+    :root {
+      --unab-navy: #0f2d4a;
+      --unab-blue: #174c7d;
+      --unab-teal: #1f6f78;
+      --unab-cyan-soft: #dff3f4;
+      --unab-bg: #f4f7fb;
+      --unab-card: #ffffff;
+      --unab-border: #d8e3ee;
+      --unab-text: #1f2d3d;
+      --unab-text-soft: #4c6277;
+      --unab-accent: #2d8ca3;
+      --unab-accent-dark: #166273;
+      --unab-badge-bg: #e7f4f8;
+      --unab-badge-text: #135769;
+      --shadow-soft: 0 12px 28px rgba(15, 45, 74, 0.08);
+      --shadow-hover: 0 18px 36px rgba(15, 45, 74, 0.14);
+      --radius-xl: 24px;
+      --radius-lg: 18px;
+      --radius-md: 14px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--unab-bg);
+      color: var(--unab-text);
+    }
+
+    .container {
+      width: min(1100px, 92%);
+      margin: 0 auto;
+    }
+
+    .section {
+      padding: 64px 0;
+    }
+
+    .white-section {
+      background: #ffffff;
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      background:
+        linear-gradient(135deg, rgba(15,45,74,0.97), rgba(23,76,125,0.95), rgba(31,111,120,0.92));
+      color: white;
+      padding: 86px 0 92px;
+    }
+
+    .hero::before,
+    .hero::after {
+      content: "";
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: 0.16;
+    }
+
+    .hero::before {
+      width: 260px;
+      height: 260px;
+      background: #6cb7c8;
+      top: -40px;
+      left: -60px;
+    }
+
+    .hero::after {
+      width: 320px;
+      height: 320px;
+      background: #ffffff;
+      bottom: -90px;
+      right: -80px;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-logo-box {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255, 255, 255, 0.96);
+      padding: 14px 18px;
+      border-radius: 18px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+      margin-bottom: 20px;
+    }
+
+    .hero-logo {
+      max-width: 320px;
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 8px 16px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.14);
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      font-size: 14px;
+      letter-spacing: 0.2px;
+    }
+
+    .hero h1 {
+      font-size: clamp(2rem, 4vw, 3.8rem);
+      line-height: 1.15;
+      margin: 22px 0 18px;
+    }
+
+    .hero-text {
+      max-width: 760px;
+      font-size: 1.08rem;
+      line-height: 1.75;
+      color: #e7eef6;
+    }
+
+    .hero-info {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 16px;
+      margin-top: 32px;
+    }
+
+    .info-box {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 18px;
+      border-radius: var(--radius-lg);
+      backdrop-filter: blur(6px);
+      border: 1px solid rgba(255,255,255,0.12);
+    }
+
+    .info-label {
+      margin: 0 0 6px;
+      font-size: 0.9rem;
+      color: #d4dfeb;
+    }
+
+    .info-value {
+      margin: 0;
+      font-size: 1.05rem;
+      font-weight: bold;
+      color: #ffffff;
+    }
+
+    .hero-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 28px;
+    }
+
+    .btn {
+      border: none;
+      padding: 12px 18px;
+      border-radius: 16px;
+      font-size: 0.95rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.2s ease;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-light {
+      background: #ffffff;
+      color: var(--unab-navy);
+    }
+
+    .btn-light:hover {
+      background: #e9f1f8;
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: white;
+      border: 1px solid rgba(255, 255, 255, 0.38);
+    }
+
+    .btn-outline:hover {
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .btn-dark {
+      background: var(--unab-blue);
+      color: white;
+    }
+
+    .btn-dark:hover {
+      background: var(--unab-navy);
+    }
+
+    .hero-down {
+      margin-top: 40px;
+      text-align: center;
+    }
+
+    .down-btn {
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      background: rgba(255, 255, 255, 0.08);
+      color: white;
+      font-size: 1.4rem;
+      cursor: pointer;
+      animation: bounce 1.8s infinite;
+    }
+
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+      40% { transform: translateY(6px); }
+      60% { transform: translateY(3px); }
+    }
+
+    .card {
+      background: var(--unab-card);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-soft);
+      padding: 32px;
+      border: 1px solid var(--unab-border);
+    }
+
+    .card h2,
+    .card h3 {
+      margin-top: 0;
+      color: var(--unab-navy);
+    }
+
+    .card p {
+      line-height: 1.8;
+      color: var(--unab-text-soft);
+    }
+
+    .section-header {
+      margin-bottom: 28px;
+    }
+
+    .section-header h2 {
+      margin: 0 0 10px;
+      font-size: 2rem;
+      color: var(--unab-navy);
+    }
+
+    .section-header p {
+      margin: 0;
+      color: var(--unab-text-soft);
+      line-height: 1.7;
+      max-width: 760px;
+    }
+
+    .grid {
+      display: grid;
+      gap: 24px;
+    }
+
+    .cards-grid {
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    }
+
+    .tools-grid {
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    }
+
+    .evidence-card {
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .evidence-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-hover);
+    }
+
+    .week-badge {
+      display: inline-block;
+      background: var(--unab-badge-bg);
+      color: var(--unab-badge-text);
+      padding: 7px 12px;
+      border-radius: 999px;
+      font-size: 0.88rem;
+      font-weight: bold;
+      border: 1px solid #c9e7ee;
+    }
+
+    .card-title {
+      margin: 16px 0 10px;
+      font-size: 1.25rem;
+      line-height: 1.4;
+      color: var(--unab-navy);
+    }
+
+    .topics-title,
+    .box-title,
+    .reflection-title {
+      font-size: 0.95rem;
+      font-weight: bold;
+      margin-bottom: 8px;
+      color: var(--unab-navy);
+    }
+
+    .topics-list {
+      margin: 0 0 16px 18px;
+      padding: 0;
+      color: var(--unab-text-soft);
+      line-height: 1.7;
+      font-size: 0.95rem;
+    }
+
+    .description {
+      color: var(--unab-text-soft);
+      line-height: 1.7;
+      font-size: 0.95rem;
+    }
+
+    .learning-box {
+      margin-top: 18px;
+      background: #f7fafd;
+      border-radius: var(--radius-lg);
+      padding: 16px;
+      border: 1px solid #e2ebf3;
+    }
+
+    .reflection-box {
+      margin-top: 16px;
+      background: #eef8f9;
+      border: 1px solid #d6ecef;
+      border-radius: var(--radius-lg);
+      padding: 16px;
+    }
+
+    .learning-box p:last-child,
+    .reflection-box p:last-child {
+      margin-bottom: 0;
+    }
+
+    .card-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .tool-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 16px;
+      background: #eaf4fb;
+      color: var(--unab-blue);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      margin-bottom: 16px;
+      font-weight: bold;
+      border: 1px solid #d6e6f4;
+    }
+
+    .tool-card h3 {
+      margin: 0 0 10px;
+      font-size: 1.2rem;
+      color: var(--unab-navy);
+    }
+
+    .tool-card p {
+      margin: 0;
+      color: var(--unab-text-soft);
+      line-height: 1.7;
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 768px) {
+      .hero {
+        padding: 60px 0 70px;
+      }
+
+      .card {
+        padding: 24px;
+      }
+
+      .section {
+        padding: 48px 0;
+      }
+
+      .hero-logo {
+        max-width: 240px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <div class="container hero-content">
+      <div class="hero-logo-box">
+        <img
+          class="hero-logo"
+          src="https://www.unab.edu.sv/wp-content/uploads/2024/12/Logos-U-1024x327.png"
+          alt="Logo Universidad Dr. Andrés Bello"
+        />
+      </div>
+
+      <p class="badge">Portafolio Digital</p>
+      <h1>Didáctica de la Educación Superior en Entornos Virtuales</h1>
+      <p class="hero-text">
+        Aquí presento mis evidencias de aprendizaje, lo que fui aprendiendo en cada semana,
+        las herramientas que utilicé y mis reflexiones durante la asignatura.
+      </p>
+
+      <div class="hero-info">
+        <div class="info-box">
+          <p class="info-label">Estudiante</p>
+          <p class="info-value">Luis Roberto García Zaña</p>
+        </div>
+        <div class="info-box">
+          <p class="info-label">Maestra</p>
+          <p class="info-value">María Eugenia del Valle de González</p>
+        </div>
+      </div>
+
+      <div class="hero-buttons">
+        <button id="btnEvidencias" class="btn btn-light">Ver evidencias</button>
+        <button id="btnReflexion" class="btn btn-outline">Ir a reflexión</button>
+      </div>
+
+      <div class="hero-down">
+        <button id="btnDown" class="down-btn" aria-label="Bajar">↓</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="section">
+      <div class="container">
+        <div class="card">
+          <h2>Introducción</h2>
+          <p>
+            Este portafolio reúne las actividades más importantes que realicé durante la asignatura.
+            Aquí muestro mis evidencias, lo que aprendí en cada semana y cómo fui avanzando a lo largo del ciclo.
+          </p>
+          <p>
+            El sitio está organizado en introducción, evidencias de aprendizaje, herramientas utilizadas,
+            reflexión final y conclusión. Cada parte muestra de forma sencilla el trabajo realizado durante la materia.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="evidencias" class="section">
+      <div class="container">
+        <div class="section-header">
+          <h2>Evidencias de aprendizaje</h2>
+          <p>En cada semana presento una actividad realizada y el aprendizaje principal que obtuve.</p>
+        </div>
+        <div id="evidenciasGrid" class="grid cards-grid"></div>
+      </div>
+    </section>
+
+    <section class="section white-section">
+      <div class="container">
+        <div class="section-header">
+          <h2>Uso de herramientas en la asignatura</h2>
+          <p>
+            Estas son algunas herramientas que utilicé durante la asignatura para realizar actividades y presentar evidencias.
+          </p>
+        </div>
+        <div id="herramientasGrid" class="grid tools-grid"></div>
+      </div>
+    </section>
+
+    <section id="reflexion" class="section white-section">
+      <div class="container">
+        <div class="card">
+          <h2>Reflexión metacognitiva</h2>
+          <p>
+            A lo largo de la asignatura entendí que enseñar en entornos virtuales no es solo subir contenido a una plataforma.
+            También implica pensar mejor las actividades, la participación del estudiante y los recursos que se van a utilizar.
+          </p>
+          <p>
+            Entre lo que más fortalecí están mi capacidad para analizar temas, organizar mejor la información,
+            elegir recursos digitales y trabajar en equipo en entornos virtuales.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="card">
+          <h2>Conclusión</h2>
+          <p>
+            La elaboración de este portafolio me permitió mostrar de forma clara y ordenada lo que aprendí durante la asignatura.
+            Cada actividad me ayudó a comprender mejor los temas vistos y a fortalecer mis conocimientos sobre la enseñanza en entornos digitales.
+          </p>
+          <p>
+            En general, este portafolio no solo reúne evidencias, sino que también muestra mi avance y el aprendizaje que fui construyendo durante el desarrollo de la materia.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const evidencias = [
+      {
+        semana: "Semana 1",
+        titulo: "La docencia universitaria: desafíos tecnológicos",
+        temas: ["La docencia universitaria: desafíos tecnológicos"],
+        descripcion: "En esta semana trabajé una evidencia sobre los desafíos tecnológicos en la docencia universitaria, usando un diagrama de Ishikawa y un video explicativo.",
+        aprendizaje: "Aprendí que los desafíos tecnológicos también pueden verse como oportunidades para mejorar la forma de enseñar.",
+        reflexion: "Esta actividad me ayudó a entender que el docente debe adaptarse a los cambios tecnológicos. También aprendí que analizar las causas y efectos de un problema ayuda a pensar en mejores soluciones.",
+        enlace: "https://drive.google.com/file/d/1RM4_E1YSzgyS3ZdsUqwOLUas4ZRi0EKv/view?usp=sharing"
+      },
+      {
+        semana: "Semana 2",
+        titulo: "Medios y recursos didácticos: conceptos, características y clasificación",
+        temas: ["Medios y recursos didácticos: conceptos, características y clasificación"],
+        descripcion: "En esta semana elaboré un mapa conceptual sobre los medios y recursos didácticos, sus conceptos, características y clasificación.",
+        aprendizaje: "Aprendí a organizar mejor las ideas y a reconocer qué recursos pueden servir más según el objetivo de aprendizaje.",
+        reflexion: "Con esta actividad entendí que no se trata solo de usar recursos llamativos, sino de escoger los que realmente ayuden a aprender. También vi que un buen recurso puede hacer la clase más clara y más interesante.",
+        enlace: "https://drive.google.com/file/d/1sNBvax7yiXQ7kTovCZcQqhd7gAQyFBf5/view?usp=sharing"
+      },
+      {
+        semana: "Semana 3",
+        titulo: "Diseño de mapas cognitivos (Parte I - II)",
+        temas: ["Diseño de mapas cognitivos (Parte I - II)"],
+        descripcion: "En esta semana trabajé evidencias relacionadas con el diseño de mapas cognitivos, una en equipo y otra de análisis comparativo sobre organizadores gráficos.",
+        aprendizaje: "Aprendí que los organizadores gráficos ayudan a resumir, comparar y comprender mejor la información.",
+        reflexion: "Esta semana me ayudó a analizar la información de diferentes maneras. También confirmé que los organizadores gráficos son útiles porque permiten relacionar ideas y entender mejor los contenidos.",
+        enlace: "https://drive.google.com/file/d/1I4vw54gvnkLzgQ0QFoZB93JE0iQvUypb/view?usp=sharing",
+        enlaceExtra: "https://docs.google.com/presentation/d/10mZlpDMM48OqoA4_e0KefXmne8JeuDmc/edit?usp=sharing&ouid=112190380492579587012&rtpof=true&sd=true"
+      },
+      {
+        semana: "Semana 4",
+        titulo: "Criterios de selección de material didáctico en la web y aplicación de las TIC",
+        temas: [
+          "Criterios de Selección de Material Didáctico en la Web",
+          "Las TIC y su aplicación en didáctica, aprovechando los entornos virtuales para fortalecer los aprendizajes"
+        ],
+        descripcion: "En esta semana trabajé una evidencia sobre cómo seleccionar material didáctico en la web y cómo aplicar las TIC para fortalecer el aprendizaje en entornos virtuales.",
+        aprendizaje: "Aprendí a ser más cuidadoso al elegir recursos de internet y entendí que usar TIC en clase debe tener un propósito claro.",
+        reflexion: "Esta actividad me ayudó a ver que no todo lo que está en internet sirve para enseñar. Entendí que es importante revisar si un recurso es útil, confiable y adecuado para la clase.",
+        enlace: "https://drive.google.com/file/d/1YUr2NaE3w3kOBoe6lwPisfnGR0uCkpNj/view?usp=sharing"
+      },
+      {
+        semana: "Semana 5",
+        titulo: "Teleformación y tutorización en entornos virtuales",
+        temas: [
+          "La Teleformación: concepto, características e importancia",
+          "La tutorización como seguimiento al proceso de aprendizaje en entornos virtuales"
+        ],
+        descripcion: "En esta semana trabajé una evidencia sobre la teleformación y la tutoría como parte del seguimiento del aprendizaje en entornos virtuales.",
+        aprendizaje: "Aprendí que la tutoría es importante para acompañar, motivar y orientar al estudiante durante su proceso de aprendizaje.",
+        reflexion: "Esta actividad me permitió valorar más el acompañamiento del docente en la educación a distancia. Entendí que orientar y motivar al estudiante es importante para que no se sienta solo en el proceso.",
+        enlace: "https://drive.google.com/file/d/1NfzRzOhp0O_QLeN0tlvv_laJpaGTK_JR/view?usp=sharing"
+      },
+      {
+        semana: "Semana 6",
+        titulo: "Material didáctico, entornos virtuales, microlearning y Design Thinking",
+        temas: [
+          "Material Didáctico",
+          "Material didáctico para entornos virtuales, interactividad, microlearning y curación de contenido",
+          "Design thinking en e-learning"
+        ],
+        descripcion: "En esta semana trabajé una evidencia relacionada con el material didáctico, su uso en entornos virtuales, la interactividad, el microlearning, la curación de contenido y el Design Thinking.",
+        aprendizaje: "Aprendí nuevas formas de diseñar actividades de aprendizaje más breves, útiles y centradas en el estudiante.",
+        reflexion: "Esta semana me ayudó a entender que hay formas más creativas de presentar los contenidos. También aprendí que estrategias como el microlearning pueden hacer el aprendizaje más dinámico y más cercano a las necesidades del estudiante.",
+        enlace: "https://www.canva.com/design/DAHCMCwmels/FryEgRD1ISB-iw_ZULv__w/view?utm_content=DAHCMCwmels&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=hfb7b626e7f"
+      },
+      {
+        semana: "Semana 7",
+        titulo: "Organización del estudio y diseño instruccional",
+        temas: [
+          "Formas de organización, planificación del estudio, la consulta de dudas y el intercambio de información",
+          "Diseño instruccional"
+        ],
+        descripcion: "En esta semana trabajé una evidencia sobre la organización del estudio, la consulta de dudas, el intercambio de información y el diseño instruccional.",
+        aprendizaje: "Aprendí que una buena enseñanza virtual necesita organización y planificación.",
+        reflexion: "Esta evidencia me ayudó a entender que improvisar no siempre da buenos resultados. También confirmé que planificar bien las actividades, los recursos y la evaluación mejora el aprendizaje.",
+        enlace: "https://www.canva.com/design/DAHC2EuN8jM/QgBkSCfS-JiSeZaLVsz3og/view?utm_content=DAHC2EuN8jM&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h927c3d8692"
+      },
+      {
+        semana: "Semana 8",
+        titulo: "Herramientas para el trabajo autónomo y cooperativo sincrónico y asincrónico",
+        temas: ["Herramientas que promueven el trabajo autónomo y cooperativo sincrónico y asincrónico"],
+        descripcion: "En esta semana trabajé una evidencia sobre herramientas que apoyan el trabajo autónomo y cooperativo en actividades sincrónicas y asincrónicas.",
+        aprendizaje: "Aprendí que la tecnología puede ayudar tanto al trabajo individual como al trabajo en equipo cuando se usa de forma adecuada.",
+        reflexion: "Esta semana me ayudó a valorar mejor las herramientas digitales para trabajar de forma individual y en equipo. También entendí que pueden mejorar la participación y la comunicación en clase.",
+        enlace: "https://drive.google.com/file/d/1dHF3ln5U2sK3aEFkndqov7HeRSAAvwxK/view?usp=sharing"
+      },
+      {
+        semana: "Semana 9",
+        titulo: "Comunidades virtuales, mediación didáctica y función docente",
+        temas: [
+          "Comunidades virtuales y su aprovechamiento para el aprendizaje significativo",
+          "Mediación didáctica a través de la socialización en ambientes virtuales",
+          "Funciones del docente y las tutorías como mediaciones didácticas para el aprendizaje"
+        ],
+        descripcion: "En esta semana trabajé una evidencia sobre las comunidades virtuales, la mediación didáctica y el papel del docente y las tutorías en el aprendizaje.",
+        aprendizaje: "Aprendí que una educación virtual de calidad necesita interacción, sentido de grupo y acompañamiento del docente.",
+        reflexion: "Esta actividad me ayudó a entender que aprender en línea no significa estar solo. También comprendí que las comunidades virtuales pueden ayudar mucho cuando promueven la participación y el apoyo entre todos.",
+        enlace: "https://www.canva.com/design/DAHEKjBV9sA/m7IbB-32K1iqzUMeSM9GNg/view?utm_content=DAHEKjBV9sA&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h5ba72c95c4"
+      }
+    ];
+
+    const herramientas = [
+      { nombre: "Kahoot", texto: "Herramienta que ayuda a participar de forma dinámica mediante preguntas y actividades interactivas.", icono: "K" },
+      { nombre: "Wordwall", texto: "Herramienta útil para crear actividades dinámicas que ayudan a reforzar los contenidos.", icono: "W" },
+      { nombre: "Canva", texto: "Plataforma que usé para crear presentaciones y materiales visuales de forma más ordenada y atractiva.", icono: "C" },
+      { nombre: "Wayground", texto: "Herramienta digital que sirve para crear actividades interactivas y reforzar los temas vistos.", icono: "WG" },
+      { nombre: "Nearpod", texto: "Plataforma que permite hacer clases más interactivas y con mayor participación del estudiante.", icono: "N" },
+      { nombre: "Educaplay", texto: "Herramienta para crear juegos y actividades educativas que hacen el aprendizaje más entretenido.", icono: "E" },
+      { nombre: "Genially", texto: "Herramienta que permite crear presentaciones y recursos visuales interactivos de forma creativa.", icono: "G" }
+    ];
+
+    const evidenciasGrid = document.getElementById("evidenciasGrid");
+    const herramientasGrid = document.getElementById("herramientasGrid");
+
+    document.getElementById("btnEvidencias").addEventListener("click", () => {
+      document.getElementById("evidencias").scrollIntoView({ behavior: "smooth" });
+    });
+
+    document.getElementById("btnReflexion").addEventListener("click", () => {
+      document.getElementById("reflexion").scrollIntoView({ behavior: "smooth" });
+    });
+
+    document.getElementById("btnDown").addEventListener("click", () => {
+      document.getElementById("evidencias").scrollIntoView({ behavior: "smooth" });
+    });
+
+    function crearBoton(texto, enlace) {
+      return `<a class="btn btn-dark" href="${enlace}" target="_blank" rel="noopener noreferrer">${texto}</a>`;
+    }
+
+    function renderEvidencias() {
+      evidenciasGrid.innerHTML = evidencias.map((item) => {
+        const temasHtml = item.temas.map((tema) => `<li>${tema}</li>`).join("");
+        return `
+          <article class="card evidence-card">
+            <span class="week-badge">${item.semana}</span>
+            <h3 class="card-title">${item.titulo}</h3>
+
+            <div>
+              <p class="topics-title">Tema(s)</p>
+              <ul class="topics-list">${temasHtml}</ul>
+            </div>
+
+            <p class="description">${item.descripcion}</p>
+
+            <div class="learning-box">
+              <p class="box-title">Aprendizaje logrado</p>
+              <p>${item.aprendizaje}</p>
+            </div>
+
+            <div class="reflection-box">
+              <p class="reflection-title">Reflexión de la semana</p>
+              <p>${item.reflexion}</p>
+            </div>
+
+            <div class="card-buttons">
+              ${crearBoton("Ver evidencia", item.enlace)}
+              ${item.enlaceExtra ? crearBoton("Ver evidencia 2", item.enlaceExtra) : ""}
+            </div>
+          </article>
+        `;
+      }).join("");
+    }
+
+    function renderHerramientas() {
+      herramientasGrid.innerHTML = herramientas.map((item) => `
+        <article class="card tool-card">
+          <div class="tool-icon">${item.icono}</div>
+          <h3>${item.nombre}</h3>
+          <p>${item.texto}</p>
+        </article>
+      `).join("");
+    }
+
+    renderEvidencias();
+    renderHerramientas();
+  </script>
+</body>
+</html>
